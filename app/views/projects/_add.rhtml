@@ -1,0 +1,27 @@
+<%= error_messages_for 'attachment' %>
+<div id="field_box" style="display:none;">
+<div class="box">
+<% form_tag({ :action => 'add_file', :id => @project }, :multipart => true, :class => "tabular") do %>
+
+<% if @project.versions.sort.any? %>
+<p><label for="version_id"><%=l(:field_version)%></label>
+<%= select_tag "version_id", content_tag('option', '') +
+        options_from_collection_for_select(@project.versions.sort, "id", "name") %></p>
+<% end %>
+
+<p><label><%=l(:label_attachment_plural)%></label><%= render :partial => 'attachments/form' %></p>
+</div>
+<%= submit_tag l(:button_add) %>
+</div>
+<% end %>
+<p>This is plugin template.</p>
+
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag "dndupload.css", :plugin => "redmine_dnd_upload", :media => "screen" %>
+  <%= javascript_include_tag "jquery-1.4.4.min.js", :plugin => "redmine_dnd_upload" %>
+  <script type="text/javascript">
+  jQuery.noConflict();
+  </script>
+  <%= javascript_include_tag "dndupload.js", :plugin => "redmine_dnd_upload" %>
+<% end %>
+
