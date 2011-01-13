@@ -1,7 +1,7 @@
 <%= error_messages_for 'attachment' %>
 <div id="field_box" style="display:none;">
 <div class="box">
-<% form_tag({ :action => 'add_file', :id => @project }, :multipart => true, :class => "tabular") do %>
+<% form_tag({ :action => 'add_file', :id => @project }, :multipart => true, :class => "tabular", :id => "add_file_form") do %>
 
 <% if @project.versions.sort.any? %>
 <p><label for="version_id"><%=l(:field_version)%></label>
@@ -14,7 +14,7 @@
 <%= submit_tag l(:button_add) %>
 </div>
 <% end %>
-<p>This is plugin template.</p>
+<div id="field">Drag File Here.</div>
 
 <% content_for :header_tags do %>
   <%= stylesheet_link_tag "dndupload.css", :plugin => "redmine_dnd_upload", :media => "screen" %>
@@ -23,5 +23,23 @@
   jQuery.noConflict();
   </script>
   <%= javascript_include_tag "dndupload.js", :plugin => "redmine_dnd_upload" %>
+<script type="text/javascript">
+
+jQuery(function($) {
+  $('#toggle_field').click(function(){
+    $('#field_box').toggle('slide');
+  });
+  $('#field').dndupload({
+    url: $('#add_file_form').attr('action'),
+    name: 'attachments[#][file]',
+    callback: function(data) {
+      //window.location.reload();
+    }
+  });
+
+
+});
+
+</script>
 <% end %>
 
