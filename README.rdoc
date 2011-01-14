@@ -1,3 +1,22 @@
-= dnd_upload
+= Drag and Drop file Upload plugin for Redmine
 
-Description goes here
+Drag and drop file upload plugin for Redmine allows easy to upload file on file menu.
+
+== Requirements
+
+* Redmine 0.8.x or later
+* Google Chrome or Safari (Recommend latest ver.)
+
+== Instration
+Follow the Redmine plugin installation steps at: www.redmine.org/wiki/redmine/Plugins
+
+Download the sources and put them to your vendor/plugins folder.
+
+    $ cd {REDMINE_ROOT}/vendor/plugins
+    $ git clone git@github.com:hiromitz/redmine_dnd_upload.git
+
+And restart your webserver if you need.
+
+== TODO
+
+* use FileAPI for Firefox 3.6+
