@@ -1,4 +1,21 @@
-.dnd-dover {
+#field_box {
+	position: relative;
+}
+#field {
+	text-align: center;
+	position: absolute;
+	left:0;right:0;top:0;bottom:0;
 	border: 2px dashed #9FCF9F;
 	background: #DFFFDF;
+	vertical-align: middle;
+	z-index: 1000;
+}
+.dndupload-input {
+	position: absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	opacity: 0;
+	z-index: 1001;
 }
